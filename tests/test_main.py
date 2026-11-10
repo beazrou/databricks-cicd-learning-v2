@@ -1,6 +1,6 @@
 import pytest
 
-from src.main import calculate_total, calculate_average
+from src.main import calculate_total, calculate_average, calculate_discount
 
 
 def test_calculate_total():
@@ -23,3 +23,21 @@ def test_negative_price():
 def test_empty_average():
     with pytest.raises(ValueError):
         calculate_average([])
+
+
+
+def test_calculate_discount():
+    assert calculate_discount(100, 20) == 80
+
+
+def test_no_discount():
+    assert calculate_discount(100, 0) == 100
+
+
+def test_full_discount():
+    assert calculate_discount(100, 100) == 0
+
+
+def test_invalid_discount():
+    with pytest.raises(ValueError):
+        calculate_discount(100, 120)
