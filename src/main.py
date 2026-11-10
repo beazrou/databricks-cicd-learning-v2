@@ -22,3 +22,11 @@ def calculate_discount(price, discount_percent):
     discount = price * discount_percent / 100
 
     return price - discount
+
+
+
+def calculate_order_total(price, quantity, discount_percent):
+    total = calculate_total(price, quantity)
+    return calculate_discount(total, discount_percent)
+
+

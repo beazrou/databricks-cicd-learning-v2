@@ -1,6 +1,6 @@
 import pytest
 
-from src.main import calculate_total, calculate_average,calculate_discount
+from src.main import calculate_total, calculate_average, calculate_discount,calculate_order_total
 
 
 def test_calculate_total():
@@ -40,3 +40,15 @@ def test_full_discount():
 def test_invalid_discount():
     with pytest.raises(ValueError):
         calculate_discount(100, 120)
+
+
+def test_calculate_order_total():
+    assert calculate_order_total(100, 3, 20) == 240
+
+
+def test_order_without_discount():
+    assert calculate_order_total(100, 2, 0) == 200
+
+
+def test_order_with_zero_quantity():
+    assert calculate_order_total(100, 0, 20) == 0
