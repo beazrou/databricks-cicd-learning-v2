@@ -1,3 +1,4 @@
+
 def calculate_total(price, quantity):
     if price < 0 or quantity < 0:
         raise ValueError("Price and quantity must be positive")
@@ -20,5 +21,9 @@ def calculate_discount(price, discount_percent):
         raise ValueError("Discount must be between 0 and 100")
 
     discount = price * discount_percent / 100
-
     return price - discount
+
+
+def calculate_order_total(price, quantity, discount_percent):
+    total = calculate_total(price, quantity)
+    return calculate_discount(total, discount_percent)
